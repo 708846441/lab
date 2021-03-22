@@ -1,3 +1,9 @@
+Exercise 1:
+
 The buffer which may overflow: reqpath in process_client
 How structure the input to the web server: input a request path with size larger than 4096
 The call stack: After run_server calls process_client, the control flow will not return to run_server
+
+Challenge:
+Use __libc_csu_init instead of accidentally to attack
+Use the instruction sequence pop %r15; retq, corresponding to the machine code 41 5F C3. But instead of executing from the start of this instruction stream, jump 1 byte in, the machine code 5F C3 corresponds to the assembly pop %rdi; retq.
