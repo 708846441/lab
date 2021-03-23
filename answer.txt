@@ -7,3 +7,8 @@ The call stack: After run_server calls process_client, the control flow will not
 Challenge:
 Use __libc_csu_init instead of accidentally to attack
 Use the instruction sequence pop %r15; retq, corresponding to the machine code 41 5F C3. But instead of executing from the start of this instruction stream, jump 1 byte in, the machine code 5F C3 corresponds to the assembly pop %rdi; retq.
+
+Exercise 5:
+Two more buffers: value and envvar in http_request_headers
+for buffer value, attackers can do the same thing like reqpath
+for buffer envvar, attackers can not only do the same thing like reqpath and value, but also overwrite buffer value
