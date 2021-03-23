@@ -82,7 +82,7 @@ const char *http_request_line(int fd, char *reqpath, char *env, size_t *env_len)
         return "Bad request path";
 
     sp2 = strchr(sp1, ' ');
-    if (!sp2)
+    if (!sp2||sp2-sp1>4096)
         return "Cannot parse HTTP request (2)";
     *sp2 = '\0';
     sp2++;
